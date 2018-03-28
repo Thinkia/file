@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel = "stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        //页面加载   获取全部信息
+        $(function(){
+            $.ajax({
+                type: "POST",//请求方式
+                url: "json/test.json",//地址，就是json文件的请求路径
+                dataType: "json",//数据类型可以为 text xml json  script  jsonp
+                success: function(result){//返回的参数就是 action里面所有的有get和set方法的参数
+                    addBox(result);
+                }
+            });
+        });
+        function addBox(result){
+            var i = 0;
+
+            //result是一个集合,所以需要先遍历
+            $.each(result,function(index,obj){
+                i++;
+
+                $("#box").append(
+                    //序号
+                    "<tr > <td align=\"center\">"+
+                    i+"</td><td align=\"center\">"+
+                    obj['modelName']+"</td><td align=\"center\">"+
+                    obj['houseType']+"</td><td align=\"center\">"+
+                    obj['timeStamp']+"</td><td align=\"center\">"+
+                    obj['status']+"</td><td align=\"center\">"+
+                    obj['ownUser']+"</td><td align=\"center\">"+
+                    obj['address']+"</td><td align=\"center\">"+
+                    "<a href=''> 下载&nbsp;</a><a href=''> 上传（大 ）&nbsp;</a><a href=''>上传（小）&nbsp;</a><a href=''> 删除 </a>"+ "</td></tr>"
+                );
+
+            });
+
+        }
+    </script>
+</head>
+<body>
+
+<div class="head" >
+    <div class="head-left">
+        <p style="color: #fff; margin-left:30px;font-size:20px; ">拓视觉管理系统 </p>
+    </div>
+
+    <div class="head-right">
+        <p style="color: #fff;font-size:20px;">欢迎vtadmin <a href="" style="color: #fff;">注销登陆</a></p>
+    </div>
+</div>
+
+<div class="content">
+
+      <div class="content-left">
+          <img src="images/logo.png" style="width:75%; margin-left:40px"/><br>
+          <p style="margin-left:30px;font-size:20px;">
+              <a href=""  style="color:#fff;"> 模型信息列表</a><br>
+              <a href=""  style="color:#fff;"> 用户管理</a>
+          </p>
+
+      </div>
+
+      <div class="content-right">
+          <p>
+              &nbsp;&nbsp;当前位置： <span>首页</span> > <span>模型信息列表 </span>
+          </p><br>
+          <p style="margin-left:50px;">
+              模型名称：<input type="text">
+              &nbsp;&nbsp;&nbsp;房型：<input type="text" placeholder="不限">
+              &nbsp;&nbsp;&nbsp;处理状态:<select>
+              <option>全部</option>
+              <option>已完成</option>
+              <option>未通过</option></select>
+          </p><br>
+          <p style="margin-left:50px;">
+              所在地址:&nbsp;&nbsp;&nbsp;<select><option>全部</option><option>123456789</option></select>
+              <select><option>全部</option><option>123456789</option></select>
+              <select><option>全部</option><option>123456789</option></select>
+              &nbsp;&nbsp;&nbsp;开始时间:<input type="text">
+              &nbsp;&nbsp;&nbsp;结束时间:<input type="text">
+              &nbsp;&nbsp;&nbsp;<button >查询</button>
+          </p>
+
+          <table width="98%" border="0" cellspacing="0"  align="center" id="box">
+              <tr bgcolor="#0000ff" style="font-size: 18px;font-weight: bold;color:#fff;">
+                  <td align="center">序号</td>
+                  <td align="center">模型名称</td>
+                  <td align="center">房型</td>
+                  <td align="center">上传时间</td>
+                  <td align="center">状态</td>
+                  <td align="center">所属用户</td>
+                  <td align="center">所在地址</td>
+                  <td align="center">操作</td>
+              </tr>
+          </table>
+
+
+
+      </div>
+</div>
+
+</body>
+</html>
