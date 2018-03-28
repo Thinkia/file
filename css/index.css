@@ -1,0 +1,36 @@
+.head{
+    background: #2e4155;
+    width:100%;height: 70px;
+}
+
+.head-left{
+    float: left;
+    width:88%;
+
+}
+
+.head-right{
+    float: left;
+    width:12%;
+
+}
+
+
+.content{
+    height:auto;
+    margin: auto;
+
+}
+
+.content-left{
+    background: #2e4155;
+    width:15%;
+    height: 1000px;
+    float: left;
+}
+
+.content-right{
+    width:85%;
+    height: 1000px;
+    float: left;
+}
